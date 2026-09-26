@@ -266,7 +266,51 @@ CRITICAL RULES:
     }
 }
 
+async function translateObject(obj, targetLanguage) {
+    if (!obj || !targetLanguage) return obj;
+    if (targetLanguage === 'en') return obj;
+    
+    const languageMap = {
+        'te': 'Telugu',
+        'hi': 'Hindi',
+        'ta': 'Tamil',
+        'kn': 'Kannada',
+        'ml': 'Malayalam',
+        'bn': 'Bengali',
+        'en': 'English'
+    };
+    const languageName = languageMap[targetLanguage] || targetLanguage;
+    
+    const TRANSLATION_INSTRUCTION = `
+You are an expert agricultural translator. Translate the string values in the provided JSON object into ${languageName}.
+
+CRITICAL RULES:
+1. Return ONLY valid JSON matching the exact structure of the input.
+2. Translate ALL string values (except scientific names like "Capsicum annuum").
+3. Do NOT add any markdown formatting (like \`\`\`json) or extra text.
+4. Preserve all JSON keys exactly as they are.
+`;
+
+    try {
+        const model = genAI.getGenerativeModel({
+            model: process.env.GEMINI_MODEL || "gemini-3.6-flash",
+            systemInstruction: TRANSLATION_INSTRUCTION,
+            generationConfig: {
+                responseMimeType: "application/json",
+            }
+        });
+
+        const result = await model.generateContent(JSON.stringify(obj));
+        const text = result.response.text().trim();
+        return JSON.parse(text);
+    } catch (error) {
+        console.error("Gemini Batch Translation Error:", error);
+        return obj; // Fallback to original object on error
+    }
+}
+
 module.exports = {
     getChatResponse,
-    translateText
+    translateText,
+    translateObject
 };

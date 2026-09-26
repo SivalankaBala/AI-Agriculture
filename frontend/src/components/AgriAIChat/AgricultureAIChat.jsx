@@ -155,9 +155,17 @@ const AgricultureAIChat = () => {
         }
     }, [isChatOpen, chatHistory, setChatHistory, t]);
 
+    // Track handled context to prevent infinite loops from re-renders
+    const handledContextRef = useRef(null);
+
     // Handle context injected from other modules
     useEffect(() => {
         if (contextData && isChatOpen) {
+            // Check if we already handled this exact context
+            const contextString = JSON.stringify(contextData);
+            if (handledContextRef.current === contextString) return;
+            handledContextRef.current = contextString;
+
             let contextMessage = "I have context from the application:\n";
             if (contextData.module === 'disease_detection') {
                 contextMessage += `Disease Detected: **${contextData.disease}** in ${contextData.crop} (${contextData.confidence}% confidence).`;
@@ -171,22 +179,31 @@ const AgricultureAIChat = () => {
                 contextMessage += `Viewing Crop: **${contextData.crop}**.`;
             }
             
-            const lastMsg = chatHistory[chatHistory.length - 1];
-            if (lastMsg && lastMsg.isContextInfo && lastMsg.content === contextMessage) return;
-
-            const newHistory = [...chatHistory, { role: 'user', content: contextMessage, isContextInfo: true }];
-            setChatHistory(newHistory);
-            
-            const queryMap = {
-                'disease_detection': "Can you explain the symptoms, causes, and how to control this disease?",
-                'crop_recommendation': "Why is this crop recommended and what are the general cultivation requirements?",
-                'yield_prediction': "What factors affect this yield and how can I improve it?",
-                'disease_risk': "How can I mitigate this disease risk?",
-                'crop_lifecycle': "Tell me about the life cycle stages for this crop."
-            };
-            
-            const autoQuery = queryMap[contextData.module] || "Can you give me more information about this?";
-            handleSendMessage(autoQuery, newHistory);
+            setChatHistory(prevHistory => {
+                const lastMsg = prevHistory[prevHistory.length - 1];
+                if (lastMsg && lastMsg.isContextInfo && lastMsg.content === contextMessage) {
+                    return prevHistory;
+                }
+                
+                const newHistory = [...prevHistory, { role: 'user', content: contextMessage, isContextInfo: true }];
+                
+                const queryMap = {
+                    'disease_detection': "Can you explain the symptoms, causes, and how to control this disease?",
+                    'crop_recommendation': "Why is this crop recommended and what are the general cultivation requirements?",
+                    'yield_prediction': "What factors affect this yield and how can I improve it?",
+                    'disease_risk': "How can I mitigate this disease risk?",
+                    'crop_lifecycle': "Tell me about the life cycle stages for this crop."
+                };
+                
+                const autoQuery = queryMap[contextData.module] || "Can you give me more information about this?";
+                
+                // Use a timeout to ensure state settles before sending
+                setTimeout(() => {
+                    handleSendMessage(autoQuery, newHistory);
+                }, 100);
+                
+                return newHistory;
+            });
         }
     }, [contextData, isChatOpen]); 
 

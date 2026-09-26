@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import PageHeader from "../components/PageHeader";
-import { translateDynamicContent, translateArray } from "../services/translationService";
+import { translateDynamicContent, translateArray, translateObject } from "../services/translationService";
 import { useAgriAI } from "../context/AgriAIContext";
 import "./CropLifeCycle.css";
 
@@ -64,20 +64,7 @@ function CropLifeCycle() {
         const data = await response.json();
         if (!data.success) throw new Error(data.message || "Failed to fetch life cycle");
         
-        let translatedCrop = { ...data.crop };
-        translatedCrop.name = await translateDynamicContent(translatedCrop.name);
-        translatedCrop.growthDuration = await translateDynamicContent(translatedCrop.growthDuration);
-        
-        if (translatedCrop.lifeCycle) {
-            for (let i = 0; i < translatedCrop.lifeCycle.length; i++) {
-                let stage = translatedCrop.lifeCycle[i];
-                stage.stage = await translateDynamicContent(stage.stage);
-                stage.duration = await translateDynamicContent(stage.duration);
-                stage.description = await translateDynamicContent(stage.description);
-                if (stage.farmerActions) stage.farmerActions = await translateArray(stage.farmerActions);
-                if (stage.monitoring) stage.monitoring = await translateArray(stage.monitoring);
-            }
-        }
+        let translatedCrop = await translateObject(data.crop);
         
         setCrop(translatedCrop);
       } catch (err) {

@@ -130,7 +130,19 @@
         "errorImage": "Please select a valid image file.",
         "errorBackend": "Unable to analyze the image. Please make sure the backend is running.",
         "errorSelect": "Please select a crop image first.",
-        "askAgriAI": "Ask AgriAI about this disease"
+        "askAgriAI": "Ask AgriAI about this disease",
+        "healthyText": "ಆರೋಗ್ಯಕರ ಬೆಳೆ",
+        "keepPlantHealthy": "🌱 ಸಸ್ಯವನ್ನು ಆರೋಗ್ಯಕರವಾಗಿಡಿ",
+        "healthyMessage": "ನಿಮ್ಮ ಟೊಮೆಟೊ ಎಲೆ ಆರೋಗ್ಯಕರವಾಗಿ ಕಾಣುತ್ತದೆ ಮತ್ತು ಯಾವುದೇ ಟೊಮೆಟೊ ರೋಗ ಪತ್ತೆಯಾಗಿಲ್ಲ.",
+        "healthyTips1": "ಸರಿಯಾದ ನೀರಾವರಿಯನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳಿ.",
+        "healthyTips2": "ಉತ್ತಮ ಗಾಳಿಯ ಪ್ರಸರಣವನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳಿ.",
+        "healthyTips3": "ಎಲೆಗಳನ್ನು ನಿಯಮಿತವಾಗಿ ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡಿ.",
+        "healthyTips4": "ತೀವ್ರವಾಗಿ ಹಾನಿಗೊಳಗಾದ ಸಸ್ಯದ ಭಾಗವನ್ನು ತೆಗೆದುಹಾಕಿ.",
+        "healthyTips5": "ಹೊಸ ರೋಗಲಕ್ಷಣಗಳಿಗಾಗಿ ಗಮನಿಸಿ.",
+        "continueMonitoring": "🔍 ನಿಮ್ಮ ಬೆಳೆಯನ್ನು ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡುವುದನ್ನು ಮುಂದುವರಿಸಿ.",
+        "favorableConditions": "🌦️ ಅನುಕೂಲಕರ ಪರಿಸ್ಥಿತಿಗಳು",
+        "important": "ಪ್ರಮುಖ",
+        "aiWarning": "ಇದು AI-ಸಹಾಯದ ಸ್ಕ್ರೀನಿಂಗ್ ಫಲಿತಾಂಶವಾಗಿದೆ. ಗಂಭೀರ ಪ್ರಕರಣಗಳನ್ನು ಸ್ಥಳೀಯ ಕೃಷಿ ತಜ್ಞರೊಂದಿಗೆ ಖಚಿತಪಡಿಸಿ."
     },
     "diseaseRisk": {
         "pageDescription": "Check the risk level for diseases in your crop based on current weather conditions.",

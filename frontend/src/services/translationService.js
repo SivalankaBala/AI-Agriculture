@@ -51,9 +51,6 @@ export const translateDynamicContent = async (text) => {
     }
 };
 
-/**
- * Translates an array of strings.
- */
 export const translateArray = async (arr) => {
     if (!arr || !Array.isArray(arr)) return arr;
     const targetLanguage = i18n.language || 'en';
@@ -61,4 +58,41 @@ export const translateArray = async (arr) => {
 
     const translatedArr = await Promise.all(arr.map(item => translateDynamicContent(item)));
     return translatedArr;
+};
+
+/**
+ * Translates an entire JSON object in a single batch request.
+ * @param {Object} obj - The object to translate.
+ * @returns {Promise<Object>} The translated object.
+ */
+export const translateObject = async (obj) => {
+    if (!obj || typeof obj !== 'object') return obj;
+    
+    const targetLanguage = i18n.language || 'en';
+    if (targetLanguage === 'en') return obj;
+
+    try {
+        const response = await fetch(`${API_URL}/object`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ obj, targetLanguage })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Translation API error: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        
+        if (data.translatedObject) {
+            return data.translatedObject;
+        }
+        
+        return obj;
+    } catch (error) {
+        console.error("Failed to translate dynamic object:", error);
+        return obj; // Fallback to original object
+    }
 };

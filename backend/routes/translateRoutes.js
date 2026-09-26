@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { translateText } = require('../services/geminiService');
+const { translateText, translateObject } = require('../services/geminiService');
 
 router.post('/', async (req, res) => {
     try {
@@ -22,6 +22,27 @@ router.post('/', async (req, res) => {
         console.error("Translation error:", error);
         // Fallback to returning the original text on error
         res.json({ translatedText: req.body.text || "" });
+    }
+});
+
+router.post('/object', async (req, res) => {
+    try {
+        const { obj, targetLanguage } = req.body;
+        
+        if (!obj || !targetLanguage) {
+            return res.status(400).json({ message: "obj and targetLanguage are required" });
+        }
+        
+        if (targetLanguage === 'en') {
+            return res.json({ translatedObject: obj });
+        }
+
+        const translatedObject = await translateObject(obj, targetLanguage);
+
+        res.json({ translatedObject });
+    } catch (error) {
+        console.error("Object Translation error:", error);
+        res.json({ translatedObject: req.body.obj || {} });
     }
 });
 

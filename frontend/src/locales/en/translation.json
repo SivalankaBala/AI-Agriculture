@@ -128,7 +128,19 @@
         "errorImage": "Please select a valid image file.",
         "errorBackend": "Unable to analyze the image. Please make sure the backend is running.",
         "errorSelect": "Please select a crop image first.",
-        "askAgriAI": "Ask AgriAI about this disease"
+        "askAgriAI": "Ask AgriAI about this disease",
+        "healthyText": "Healthy Crop",
+        "keepPlantHealthy": "🌱 Keep the plant healthy",
+        "healthyMessage": "Your tomato leaf appears healthy and no supported tomato disease was detected.",
+        "healthyTips1": "Maintain proper irrigation.",
+        "healthyTips2": "Maintain good air circulation.",
+        "healthyTips3": "Monitor leaves regularly.",
+        "healthyTips4": "Remove severely damaged plant material.",
+        "healthyTips5": "Watch for new symptoms.",
+        "continueMonitoring": "🔍 Continue monitoring your crop.",
+        "favorableConditions": "🌦️ Favorable Conditions",
+        "important": "Important",
+        "aiWarning": "This is an AI-assisted screening result. Confirm serious cases with a local agricultural expert."
     },
     "diseaseRisk": {
         "pageDescription": "Check the risk level for diseases in your crop based on current weather conditions.",

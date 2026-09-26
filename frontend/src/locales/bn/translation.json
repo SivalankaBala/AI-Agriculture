@@ -130,7 +130,19 @@
         "errorImage": "Please select a valid image file.",
         "errorBackend": "Unable to analyze the image. Please make sure the backend is running.",
         "errorSelect": "Please select a crop image first.",
-        "askAgriAI": "Ask AgriAI about this disease"
+        "askAgriAI": "Ask AgriAI about this disease",
+        "healthyText": "সুস্থ ফসল",
+        "keepPlantHealthy": "🌱 গাছ সুস্থ রাখুন",
+        "healthyMessage": "আপনার টমেটো পাতা সুস্থ বলে মনে হচ্ছে এবং কোন টমেটো রোগ শনাক্ত করা হয়নি।",
+        "healthyTips1": "সঠিক সেচ বজায় রাখুন।",
+        "healthyTips2": "ভালো বায়ু চলাচল বজায় রাখুন।",
+        "healthyTips3": "নিয়মিত পাতা পর্যবেক্ষণ করুন।",
+        "healthyTips4": "মারাত্মকভাবে ক্ষতিগ্রস্ত গাছের অংশ সরিয়ে ফেলুন।",
+        "healthyTips5": "নতুন উপসর্গের জন্য লক্ষ্য রাখুন।",
+        "continueMonitoring": "🔍 আপনার ফসল পর্যবেক্ষণ চালিয়ে যান।",
+        "favorableConditions": "🌦️ অনুকূল পরিস্থিতি",
+        "important": "গুরুত্বপূর্ণ",
+        "aiWarning": "এটি একটি এআই-সহায়তা স্ক্রীনিং ফলাফল। স্থানীয় কৃষি বিশেষজ্ঞের সাথে গুরুতর কেসগুলি নিশ্চিত করুন।"
     },
     "diseaseRisk": {
         "pageDescription": "Check the risk level for diseases in your crop based on current weather conditions.",

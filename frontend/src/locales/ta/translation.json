@@ -130,7 +130,19 @@
         "errorImage": "Please select a valid image file.",
         "errorBackend": "Unable to analyze the image. Please make sure the backend is running.",
         "errorSelect": "Please select a crop image first.",
-        "askAgriAI": "Ask AgriAI about this disease"
+        "askAgriAI": "Ask AgriAI about this disease",
+        "healthyText": "ஆரோக்கியமான பயிர்",
+        "keepPlantHealthy": "🌱 செடியை ஆரோக்கியமாக வைத்திருங்கள்",
+        "healthyMessage": "உங்கள் தக்காளி இலை ஆரோக்கியமாகத் தெரிகிறது மற்றும் எந்த தக்காளி நோயும் கண்டறியப்படவில்லை.",
+        "healthyTips1": "முறையான நீர்ப்பாசனத்தை பராமரிக்கவும்.",
+        "healthyTips2": "நல்ல காற்று சுழற்சியை பராமரிக்கவும்.",
+        "healthyTips3": "இலைகளை தவறாமல் கண்காணிக்கவும்.",
+        "healthyTips4": "கடுமையாக சேதமடைந்த தாவர பகுதிகளை அகற்றவும்.",
+        "healthyTips5": "புதிய அறிகுறிகளைக் கவனிக்கவும்.",
+        "continueMonitoring": "🔍 உங்கள் பயிரைத் தொடர்ந்து கண்காணிக்கவும்.",
+        "favorableConditions": "🌦️ சாதகமான நிலைமைகள்",
+        "important": "முக்கியமானது",
+        "aiWarning": "இது AI உதவியுடன் கூடிய திரையிடல் முடிவு. தீவிரமான நிகழ்வுகளை உள்ளூர் விவசாய நிபுணரிடம் உறுதிப்படுத்தவும்."
     },
     "diseaseRisk": {
         "pageDescription": "Check the risk level for diseases in your crop based on current weather conditions.",
